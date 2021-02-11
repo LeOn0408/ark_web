@@ -39,6 +39,17 @@ article{
 }
 #News .content-gen {
     background:rgba(0,0,0, 0.5);
+    width: 46%;
+    height: 300px;
+    float: left;
+    margin: 2%;
+}
+#News .first-content {
+    background:rgba(0,0,0, 0.5);
+    width: 96%;
+    height: 300px;
+    float: left;
+    margin: 2%;
 }
 
 aside{
@@ -47,7 +58,7 @@ aside{
     position: relative;
     width: 30%;
     padding-left:2% ;
-    margin-top: 107px;
+    margin-top: 90px;
 }
 .iplist,.roadmap, .yandex{
     background:#44414d;
@@ -73,6 +84,9 @@ footer{
 /*страници с контентом*/
 .content {
     background:rgba(0,0,0, 0.5);
+    margin-top: 107px;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
 }
 @media screen and (max-width: 767px) { 
     aside { 

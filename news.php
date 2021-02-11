@@ -49,9 +49,9 @@
 				?>
 				<?php 
 					echo 
-					'<div style="width:25%; float: left; background:rgba(0,0,0, 0.5);">Раздел: '.$heading.'</div>'.
-					'<div style="width:25%; float: left; background:rgba(0,0,0, 0.5);">'.$author.'</div>'.
-					'<div style="width:25%; float: left; background:rgba(0,0,0, 0.5);">'.$date.'</div>';
+					'<div style="width:25%; float: left; background:rgba(0,0,0, 0.5);margin-top: 10px;">Раздел: '.$heading.'</div>'.
+					'<div style="width:25%; float: left; background:rgba(0,0,0, 0.5);margin-top: 10px;">'.$author.'</div>'.
+					'<div style="width:25%; float: left; background:rgba(0,0,0, 0.5);margin-top: 10px;">'.$date.'</div>';
 					
 				?>
 				<div id="vk_like" style="margin:10px" >

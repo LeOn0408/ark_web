@@ -27,30 +27,60 @@
                     $user = "web";          // Имя пользователя
                     $password = "";            // Пароль
                     
+                    
                     // Попытка установить соединение с MySQL:
                     // подключаемся к серверу
                     $connect = mysqli_connect($host, $user, $password, 'aparshukov_ark') //соединяемся с базой
                         or die("К сожалению возникла проблема с загрузкой страницы " . mysqli_error($connect));//если проблема, то выдаем ошибку
                     mysqli_set_charset($connect,"utf8");//принудительно даем кодировку
+                    
+                    
+                    //в разработке страницы 
+                    $page=1;
+                    $pageID=$page-1;
+                    $post=$pageID*5;
+                    $lastPost=$post+5;
+                    
+                    
                     // выполняем операции с базой данных
-                    $query  = 'SELECT * FROM ark_news';//выбрать все таблицы
+                    $query  = "SELECT * FROM ark_news ORDER BY ID DESC LIMIT $post,$lastPost"; //выбрать все id нужной страницы /в разработке
                     $result = mysqli_query($connect, $query);//вывести результат
-                    $data   = mysqli_fetch_all($result, MYSQLI_ASSOC);//загрузить масив строк
-                    foreach (array_reverse($data) as $i => $item) {// перебрать массив, array_reverse - обратный масив
-                        echo 
-                        '<div class ="content-gen">'.
-                            '<h1 style="font-size: 15pt; font-family: monospace; margin: 30px; color: white"> <a href="http://ark.aparshukov.ru/news.php?news='.$item['ID'].' " style="color: #ffffff">' . $item['Name'] . '</a></h1>'.
-                            '<div style="margin:30px">' 
-                                . $item['sh_desc'] . '<br><br>'.
+                    $data   = mysqli_fetch_all($result, MYSQLI_ASSOC);
+                    
+                    
+                    
+                    foreach ($data as $i => $item) {
+                        if ($i==0){
+                            echo 
+                            '<div class ="first-content">'.
+                                '<h1 style="font-size: 15pt; font-family: monospace; margin: 30px; color: white"> <a href="http://ark.aparshukov.ru/news.php?news='.$item['ID'].' " style="color: #ffffff">' . $item['Name'] . '</a></h1>'.
+                                '<div style="margin:30px">' 
+                                    . $item['sh_desc'] . '<br><br>'.
+                                    
+                                    
+                                '</div>'.
                                 
+                            '</div>' ;	
+                        }
+                        else{
+                            echo 
+                            '<div class ="content-gen">'.
+                                '<h1 style="font-size: 15pt; font-family: monospace; margin: 30px; color: white"> <a href="http://ark.aparshukov.ru/news.php?news='.$item['ID'].' " style="color: #ffffff">' . $item['Name'] . '</a></h1>'.
+                                '<div style="margin:30px">' 
+                                    . $item['sh_desc'] . '<br><br>'.
+                                    
+                                    
+                                '</div>'.
                                 
-                            '</div>'.
-                            
-                        '</div>';	
-                    }	
+                            '</div>' ;	
+                        }
+                    }
+
                     // закрываем подключение
+                    
                     mysqli_close($connect);
                 ?>
+                
             </div>
         </article>
         <aside>
